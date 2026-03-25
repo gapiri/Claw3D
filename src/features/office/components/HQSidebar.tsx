@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { useRouter } from "next/navigation";
 
 export type HQSidebarTab =
   | "inbox"
@@ -44,6 +45,7 @@ export function HQSidebar({
   playbooksPanel,
   analyticsPanel,
 }: HQSidebarProps) {
+  const router = useRouter();
   const analyticsOnly = activeTab === "analytics";
   const railOnly = analyticsOnly;
   const activePanel =
@@ -101,6 +103,17 @@ export function HQSidebar({
         >
           <span className="block leading-none [writing-mode:vertical-rl]">
             ANALYTICS
+          </span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => router.push("/orchestrator")}
+          className="rounded-l-md border border-r-0 border-green-500/25 bg-[#061206]/90 px-1.5 py-2.5 font-mono text-[10px] font-semibold tracking-[0.2em] text-green-300/80 shadow-xl backdrop-blur transition-colors hover:border-green-400/45 hover:text-green-100"
+          aria-label="Open orchestrator panel"
+        >
+          <span className="block leading-none [writing-mode:vertical-rl]">
+            ORCHESTR
           </span>
         </button>
       </div>
